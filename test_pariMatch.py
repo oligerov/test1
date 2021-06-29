@@ -1,7 +1,6 @@
 import http.client
 import json
 import datetime
-import csv
 from openpyxl import Workbook
 import plotly.offline
 import numpy
@@ -67,13 +66,6 @@ for i in range(len(matches)):
                        datetime.datetime.strptime(matches[i]['utcDate'], "%Y-%m-%dT%H:%M:%SZ").strftime('%d-%m-%Y %H:%M'),
                        matches[i]['oddsHomeWin'], matches[i]['oddsDraw'], matches[i]['oddsAwayWin']])
                        #home_teams[i], away_teams[i]])
-
-with open("test_PariMatch.csv", 'w', encoding="utf-8") as csv_file:
-    csv_writer = csv.writer(csv_file, delimiter=',')
-    for i in outputData:
-        csv_writer.writerow(i)
-csv_file.close()
-
 wb = Workbook()
 sheet = wb.active
 for item in outputData:
